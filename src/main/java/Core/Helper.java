@@ -11,11 +11,11 @@ import java.util.Map;
 public class Helper {
     public WebDriver driver;
 
-    public WebDriver chromeLaunch() {
 
+    public WebDriver chromeLaunch() {
         ChromeOptions options = new ChromeOptions(); //
-        Map<java.lang.String, Object> prefs = new HashMap<>();
-        Map<java.lang.String, Map<java.lang.String, Integer>> profile = new HashMap<>();
+        Map<String, Object> prefs = new HashMap<>();
+        Map<String, Map<String, Integer>> profile = new HashMap<>();
         Map<String, Integer> contentSettings;
         contentSettings = new HashMap<>();
         contentSettings.put("notifications", 2);
@@ -24,6 +24,9 @@ public class Helper {
         prefs.put("profile", profile);
         options.setExperimentalOption("prefs", prefs);
         options.addArguments("--remote-allow-origins=*");
+       // options.addArguments("--no-sandbox");
+       // options.addArguments("--disable-dev-shm-usage");
+       // options.addArguments("--headless");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
 
